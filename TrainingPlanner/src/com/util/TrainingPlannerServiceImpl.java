@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -146,8 +148,29 @@ public class TrainingPlannerServiceImpl implements TrainingPlannerService {
 	public Map<String, Integer> searchLocationsWiseClassroomsAlongWithCapacity(
 			String locationName, List<Location> locations)
 			throws InvalidLocationException {
-		// TODO Auto-generated method stub
-		return null;
+			Map<String,Integer>mp=new LinkedHashMap<>();
+		class MyComp implements Comparator<Location>{
+			
+		
+
+		@Override
+		public int compare(Location o1, Location o2) {
+			int i=o2.getCapacity()-o1.getCapacity();
+				//if(i==0)
+			return i;
+		}
+		}
+		Collections.sort(locations, new MyComp());
+		
+				for (Location location : locations) {
+					if(locationName.trim().equalsIgnoreCase(location.getLocationName())){
+						mp.put(location.getClassRoomName(), location.getCapacity());
+					}
+				}
+				if(mp.size()==0)
+					throw new InvalidLocationException();
+	
+		return mp;
 	}
 
 	@Override
