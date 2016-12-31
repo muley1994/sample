@@ -3,6 +3,12 @@ package com.beans;
 import java.util.Map;
 
 public class Trainer {
+	@Override
+	public String toString() {
+		return "Trainer [trainerId=" + trainerId + ", trainerName="
+				+ trainerName + ",\t\t skillPrefenceMap=" + skillPrefenceMap + "]\n";
+	}
+
 	private int trainerId;
 	private String trainerName;
 

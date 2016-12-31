@@ -34,4 +34,10 @@ public class Location {
 		this.capacity = capacity;
 	}
 
+	@Override
+	public String toString() {
+		return "Location [locationName=" + locationName + ", classRoomName="
+				+ classRoomName + ", capacity=" + capacity + "]\n";
+	}
+
 }

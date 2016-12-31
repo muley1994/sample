@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BatchTemplate {
+	@Override
+	public String toString() {
+		return "BatchTemplate [batchType=" + batchType
+				+ ", coursesWithDuration=" + coursesWithDuration + "]\n";
+	}
+
 	private BatchType batchType;
 	private Map<String, Integer> coursesWithDuration=new HashMap<String, Integer>();
 
